@@ -34,21 +34,19 @@ export class RatingStarsComponent implements OnInit {
       }
       this.api.sendRate(token, data).subscribe( res => {
         if(res["rated"]) {
-          this.rated = "Dziękujemy za ocenę.";
+          this.rated = "Thank you for your rating.";
         } else if (res["secs"]) {
           this.rate = prev_rate;
           (<HTMLInputElement>document.getElementById("star-"+this.rate)).checked = true;
-          this.rated = "Za szybko! Poczekaj ";
+          this.rated = "Too fast! Wait ";
           if (res["secs"] === 0)
-            this.rated += "chwileczkę."
+            this.rated += "a moment."
           else if (res["secs"] === 1)
-            this.rated += "sekundkę.";
-          else if (res["secs"] === 5)
-            this.rated += "5 sekund.";
+            this.rated += "a second.";
           else
-            this.rated += res["secs"] + " sekundy.";
+            this.rated += res["secs"] + " seconds.";
         } else {
-          this.rated = "Wystapił błąd przy wysyłaniu oceny.";
+          this.rated = "An error occurred while sending your rating.";
         }
       });
     }

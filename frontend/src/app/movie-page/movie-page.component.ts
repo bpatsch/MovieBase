@@ -28,13 +28,13 @@ export class MoviePageComponent implements OnInit {
       if(token) {
         this.api.getRate(token, this.movieId).subscribe( res => {
           if(!Object.keys(res).length) {
-            this.rated = "Wystapił błąd przy pobieraniu oceny."
+            this.rated = "There was an error retrieving your rating."
           } else if(res["rate"] !== 0) {
             this.rate = res["rate"];
             (<HTMLInputElement>document.getElementById("star-"+this.rate)).checked = true;
-            this.rated = "Twoja ocena: " + this.rate +"/5"
+            this.rated = "Your rating: " + this.rate +"/5"
           } else {
-            this.rated = "Nie oceniłeś jeszcze tego filmu."
+            this.rated = "You haven't rated this movie yet."
           }
         })
       }
@@ -55,21 +55,21 @@ export class MoviePageComponent implements OnInit {
       }
       this.api.sendRate(token, data).subscribe( res => {
         if(res["rated"]) {
-          this.rated = "Dziękujemy za ocenę.";
+          this.rated = "Thank you for your rating.";
         } else if (res["secs"]) {
           this.rate = prev_rate;
           (<HTMLInputElement>document.getElementById("star-"+this.rate)).checked = true;
-          this.rated = "Za szybko! Poczekaj ";
+          this.rated = "Too fast! Please wait ";
           if (res["secs"] === 0)
-            this.rated += "chwileczkę."
+            this.rated += "one moment."
           else if (res["secs"] === 1)
-            this.rated += "sekundkę.";
+            this.rated += "a second.";
           else if (res["secs"] === 5)
-            this.rated += "5 sekund.";
+            this.rated += "5 seconds.";
           else
-            this.rated += res["secs"] + " sekundy.";
+            this.rated += res["secs"] + " seconds.";
         } else {
-          this.rated = "Wystapił błąd przy wysyłaniu oceny.";
+          this.rated = "An error occured while sending the rating.";
         }
       });
     }

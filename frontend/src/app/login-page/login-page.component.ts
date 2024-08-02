@@ -21,7 +21,7 @@ export class LoginPageComponent implements OnInit {
     const username = (<HTMLInputElement>document.getElementById("username")).value;
     const password = (<HTMLInputElement>document.getElementById("password")).value;
     if(username === '' || password === '') {
-      this.error = 'Podaj login i hasło'
+      this.error = 'Enter your username and password.'
     } else {
       this.api.login(username, password).subscribe( res => {
         if(res['logged']) {
@@ -30,7 +30,7 @@ export class LoginPageComponent implements OnInit {
           this.router.navigate(['/']);
           this.loginService.sendLoggedUser(username);
         } else {
-          this.error = "Niepoprawny login lub hasło.";
+          this.error = "Incorrect username or password.";
           (<HTMLInputElement>document.getElementById("username")).value = '';
           (<HTMLInputElement>document.getElementById("password")).value = '';
         }
@@ -45,10 +45,10 @@ export class LoginPageComponent implements OnInit {
     const password = (<HTMLInputElement>document.getElementById("password1")).value;
     const password2 = (<HTMLInputElement>document.getElementById("password2")).value;
     if(username === '' || email === '' || password === '' || password2 === '') {
-      this.error = "Podaj wszystkie dane"
+      this.error = "Fill in all details."
     } else {
       if (password !== password2) {
-        this.error = "Hasła się różnią"
+        this.error = "Passwords do not match."
       } else {
         const data = {
           username,

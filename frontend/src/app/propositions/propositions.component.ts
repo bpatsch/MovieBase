@@ -21,9 +21,9 @@ export class PropositionsComponent implements OnInit {
     const token = localStorage.getItem("token")
     this.api.getRecommendations(token).subscribe(res => {
       if(res["count"] == -1) {
-        this.error = "Błąd w trakcie szukania rekomendacji."
+        this.error = "Error while searching for recommendations."
       } else if(res["count"] < 5) {
-        this.error = "Aby otrzymać rekomendacje, musisz wystawić co najmniej 5 ocen.";
+        this.error = "To receive recommendations, you must leave at least 5 ratings.";";
       } else {
         const list = JSON.parse(res["recomendations"]);
         this.error = ""
@@ -40,7 +40,7 @@ export class PropositionsComponent implements OnInit {
         this.moviesFound[index] = Object.assign(new ImbdMovie(), res);
       }, err => {
         console.log(err);
-        this.error = 'Błąd zewnerznego API';
+        this.error = 'External API error (ImdbApi)';
       });
     });
   }

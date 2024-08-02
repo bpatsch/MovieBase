@@ -1,11 +1,11 @@
 <main>
     <div class="mycard">
-        <h1>Wyszukaj film</h1>
+        <h1>Search movies</h1>
         <form (keydown.enter)="$event.preventDefault()">
             <div class="wrap">
                 <span>
                 <input type="text" id="movieSearch" (keydown.enter)="search()" required>       
-                <button class="btn btn-outline-dark btn-sm " (click)="search()" type="button">Szukaj</button>
+                <button class="btn btn-outline-dark btn-sm " (click)="search()" type="button">Search</button>
             </span>
             </div>
             <p class="error"> {{error}} </p>

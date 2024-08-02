@@ -22,7 +22,7 @@ export class SearchComponent {
     const phrase = (<HTMLInputElement>document.getElementById("movieSearch")).value;
     const token = localStorage.getItem("token");
     if (phrase === '') {
-      this.error = 'Nie podałeś tytułu!'
+      this.error = 'You did not provide a title!'
     } else {
       this.api.search(token, phrase).subscribe( (res) => {
         const list = Object.values(res);
@@ -33,11 +33,11 @@ export class SearchComponent {
           });
           this.getDataFromImdbApi();
         } else {
-          this.error = 'Nie znaleziono żadnych tytułów ;('
+          this.error = 'No titles found; ('
         }
       }, (err) => {
         console.log(err);
-        this.error = 'Błąd API';
+        this.error = 'API Error';
       });
     }
   }
@@ -48,7 +48,7 @@ export class SearchComponent {
         this.moviesFound.push(Object.assign(new ImbdMovie(), res))
       }, err => {
         console.log(err);
-        this.error = 'Błąd zewnerznego API';
+        this.error = 'External API error (ImdbApi)';
       });
     });
   }

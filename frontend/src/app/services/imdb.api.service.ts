@@ -12,7 +12,10 @@ export class ImbdService {
 
     constructor(private http: HttpClient) {
         this.baseURL = 'http://www.omdbapi.com/';
-        this.apiKey = '35c93c49';
+        // this.apiKey = '35c93c49';
+        // BP: TODO
+        this.apiKey = 'd445c75a';
+        // BP: /TODO
     }
     public getMovie(id: string) {
         id = 'tt' + id;

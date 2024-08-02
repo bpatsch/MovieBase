@@ -3,27 +3,27 @@
         <h1>Logowanie</h1>
         <form (keydown.enter)="$event.preventDefault()">
             <div>
-                <label for="username">Nazwa użytkownika</label>
+                <label for="username">Username</label>
                 <input type="text" id="username" (keydown.enter)="login()" required>
             </div>
 
             <div>
-                <label for="password">Hasło</label>
+                <label for="password">Password</label>
                 <input type="password" id="password" (keydown.enter)="login()" required>
             </div>
             <p class="error"> {{error}} </p>
         </form>
-        <button class="btn btn-outline-dark btn-sm action" (click)="login()" type="button">Zaloguj</button>
+        <button class="btn btn-outline-dark btn-sm action" (click)="login()" type="button">Log in</button>
         <div class="return">
-            <p>Nie masz konta? <span class="link" style="cursor: pointer;" (click)="registerModeChange(true)">Zarejestuj się</span></p>
+          <p>Don't have an account? <span class="link" style="cursor: pointer;" (click)="registerModeChange(true)">-&gt; Sign up</span></p>
         </div>
     </div>
 
     <div class="mycard" *ngIf="registerMode">
-        <h1>Rejestracja</h1>
+        <h1>Registration</h1>
         <form (keydown.enter)="$event.preventDefault()">
             <div>
-                <label for="username">Nazwa użytkownika:</label>
+                <label for="username">Username:</label>
                 <input type="text" id="username" required>
             </div>
             <div>
@@ -31,18 +31,18 @@
                 <input type="email" id="email" required>
             </div>
             <div>
-                <label for="password1">Hasło:</label>
+                <label for="password1">Password:</label>
                 <input type="password" id="password1" required>
             </div>
             <div>
-                <label for="password2">Powtórz hasło:</label>
+                <label for="password2">Repeat password:</label>
                 <input type="password" id="password2" (keydown.enter)="register()" required>
             </div>
             <p class="error">{{error}}</p>
         </form>
-        <button class="btn btn-outline-dark btn-sm action" (click)="register()" type="button">Zarejestruj się</button>
+        <button class="btn btn-outline-dark btn-sm action" (click)="register()" type="button">Sign up</button>
         <div class="return">
-            <p>Masz konto? <span class="link" style="cursor: pointer;" (click)="registerModeChange(false)">Zaloguj się</span></p>
+            <p>Have an account? <span class="link" style="cursor: pointer;" (click)="registerModeChange(false)">Log in</span></p>
         </div>
 
     </div>

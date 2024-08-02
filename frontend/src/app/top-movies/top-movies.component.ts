@@ -37,7 +37,7 @@ export class TopMoviesComponent implements OnInit {
           });
           this.getDataFromImdbApi();
         } else {
-          this.error = 'Nie znaleziono żadnych tytułów ;('
+          this.error = 'No titles found ;('
         }
     });
   }

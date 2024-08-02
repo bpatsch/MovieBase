@@ -19,11 +19,11 @@ def register():
             access_token = create_access_token(identity=user.id)
             result = { 'registered': True, 'token': access_token}
         except exc.IntegrityError:
-            result = { 'registered': False, 'reason': 'Użytkonik istnieje.'}
+            result = { 'registered': False, 'reason': 'User exists already.'}
         finally:
             db.session.close()
     else:
-        result = { 'registered': False, 'reason': 'Nie podano wszystkich danych do rejestracji.'}
+        result = { 'registered': False, 'reason': 'Not all registration data was provided.'}
     return result
 
 @auth.route("/login", methods=['POST'])
@@ -35,6 +35,7 @@ def login():
         access_token = create_access_token(identity=user.id, expires_delta=expires)
         return { 'logged': True, 'token': access_token, 'user': user.username }
     else:
+        # BP: mocking
         return { 'logged': False }
 
 @auth.route("/logout", methods=['GET'])
@@ -60,4 +61,3 @@ def refresh():
     except Exception as e:
         print(str(e))
         return {}
-    
